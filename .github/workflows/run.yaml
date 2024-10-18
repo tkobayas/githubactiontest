@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          docker image prune -f
+          bash -c "if [ -n \"$(docker images -f dangling=true -q)\" ]; then docker rmi $(docker images -f dangling=true -q); else echo 'No dangling images to remove.'; fi"
