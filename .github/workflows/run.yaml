@@ -3,13 +3,11 @@ on:
   push:
     paths:
       - 'drools-docs/**/**.adoc'
-      - '.github/workflows/drools-docs-pr.yml'
+      - '.github/workflows/run.yaml'
 
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "this is pen2"
-      - uses: actions/checkout@v2
       - run: |
-          ls -al
+          docker image prune -f
